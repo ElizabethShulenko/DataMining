@@ -52,16 +52,16 @@ namespace LW1
             this.labelHamAverageLength = new System.Windows.Forms.Label();
             this.labelSpamAverageLength = new System.Windows.Forms.Label();
             this.chartSpamWordLength = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartSpamNoticeLength = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartHamNoticeLength = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartSpamNotificationLength = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartHamNotificationLength = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelHamNoticeAvgLength = new System.Windows.Forms.Label();
             this.labelSpamNoticeAvgLength = new System.Windows.Forms.Label();
             this.chartHamFrequentWords = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpamFrequentWords = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chartHamWordLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpamWordLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpamNoticeLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartHamNoticeLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpamNotificationLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHamNotificationLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHamFrequentWords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpamFrequentWords)).BeginInit();
             this.SuspendLayout();
@@ -130,39 +130,39 @@ namespace LW1
             this.chartSpamWordLength.TabIndex = 6;
             this.chartSpamWordLength.Text = "chart1";
             // 
-            // chartSpamNoticeLength
+            // chartSpamNotificationLength
             // 
             chartArea3.Name = "ChartArea1";
-            this.chartSpamNoticeLength.ChartAreas.Add(chartArea3);
+            this.chartSpamNotificationLength.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
-            this.chartSpamNoticeLength.Legends.Add(legend3);
-            this.chartSpamNoticeLength.Location = new System.Drawing.Point(569, 416);
-            this.chartSpamNoticeLength.Name = "chartSpamNoticeLength";
+            this.chartSpamNotificationLength.Legends.Add(legend3);
+            this.chartSpamNotificationLength.Location = new System.Drawing.Point(569, 416);
+            this.chartSpamNotificationLength.Name = "chartSpamNotificationLength";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series3.Legend = "Legend1";
-            series3.Name = "SpamNoticeLength";
-            this.chartSpamNoticeLength.Series.Add(series3);
-            this.chartSpamNoticeLength.Size = new System.Drawing.Size(551, 396);
-            this.chartSpamNoticeLength.TabIndex = 7;
-            this.chartSpamNoticeLength.Text = "chart1";
+            series3.Name = "SpamNotificationLength";
+            this.chartSpamNotificationLength.Series.Add(series3);
+            this.chartSpamNotificationLength.Size = new System.Drawing.Size(551, 396);
+            this.chartSpamNotificationLength.TabIndex = 7;
+            this.chartSpamNotificationLength.Text = "chart1";
             // 
-            // chartHamNoticeLength
+            // chartHamNotificationLength
             // 
             chartArea4.Name = "ChartArea1";
-            this.chartHamNoticeLength.ChartAreas.Add(chartArea4);
+            this.chartHamNotificationLength.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
-            this.chartHamNoticeLength.Legends.Add(legend4);
-            this.chartHamNoticeLength.Location = new System.Drawing.Point(569, 12);
-            this.chartHamNoticeLength.Name = "chartHamNoticeLength";
+            this.chartHamNotificationLength.Legends.Add(legend4);
+            this.chartHamNotificationLength.Location = new System.Drawing.Point(569, 12);
+            this.chartHamNotificationLength.Name = "chartHamNotificationLength";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series4.Legend = "Legend1";
-            series4.Name = "HamNoticeLength";
-            this.chartHamNoticeLength.Series.Add(series4);
-            this.chartHamNoticeLength.Size = new System.Drawing.Size(551, 398);
-            this.chartHamNoticeLength.TabIndex = 8;
-            this.chartHamNoticeLength.Text = "chart1";
+            series4.Name = "HamNotificationLength";
+            this.chartHamNotificationLength.Series.Add(series4);
+            this.chartHamNotificationLength.Size = new System.Drawing.Size(551, 398);
+            this.chartHamNotificationLength.TabIndex = 8;
+            this.chartHamNotificationLength.Text = "chart1";
             // 
             // labelHamNoticeAvgLength
             // 
@@ -239,8 +239,8 @@ namespace LW1
             this.Controls.Add(this.chartHamFrequentWords);
             this.Controls.Add(this.labelSpamNoticeAvgLength);
             this.Controls.Add(this.labelHamNoticeAvgLength);
-            this.Controls.Add(this.chartHamNoticeLength);
-            this.Controls.Add(this.chartSpamNoticeLength);
+            this.Controls.Add(this.chartHamNotificationLength);
+            this.Controls.Add(this.chartSpamNotificationLength);
             this.Controls.Add(this.chartSpamWordLength);
             this.Controls.Add(this.labelSpamAverageLength);
             this.Controls.Add(this.labelHamAverageLength);
@@ -251,8 +251,8 @@ namespace LW1
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.chartHamWordLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpamWordLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpamNoticeLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartHamNoticeLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpamNotificationLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHamNotificationLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHamFrequentWords)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpamFrequentWords)).EndInit();
             this.ResumeLayout(false);
@@ -267,8 +267,8 @@ namespace LW1
         private System.Windows.Forms.Label labelHamAverageLength;
         private System.Windows.Forms.Label labelSpamAverageLength;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSpamWordLength;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpamNoticeLength;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartHamNoticeLength;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpamNotificationLength;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartHamNotificationLength;
         private System.Windows.Forms.Label labelHamNoticeAvgLength;
         private System.Windows.Forms.Label labelSpamNoticeAvgLength;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHamFrequentWords;

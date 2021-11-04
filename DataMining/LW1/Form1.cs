@@ -34,23 +34,29 @@ namespace LW1
             var hamDictionary = CountWords(String.Join(" ", hamList)).OrderByDescending(x => x.Value).ToList();
             var spamDictionary = CountWords(String.Join(" ", spamList)).OrderByDescending(x => x.Value).ToList();
 
-            WriteDictionaryToFile(hamDictionary, "F:/univer/test", "hamDictionary.txt");
-            WriteDictionaryToFile(spamDictionary, "F:/univer/test", "spamDictionary.txt");
+            WriteDictionaryToFile(hamDictionary, "../../Output", "hamDictionary.txt");
+            WriteDictionaryToFile(spamDictionary, "../../Output", "spamDictionary.txt");
 
-            Utillities.DrawNewChart(hamDictionary, chartHamWordLength);
-            Utillities.DrawNewChart(spamDictionary, chartSpamWordLength);
+            var hamWordCountDictionary = Utillities.CountWordsLength(hamDictionary.Select(m => m.Key)).OrderBy(m=>m.Key);
+            var spamWordCountDictionary = Utillities.CountWordsLength(spamDictionary.Select(m => m.Key)).OrderBy(m => m.Key);
+
+            Utillities.DrawNewChart(hamWordCountDictionary, chartHamWordLength);
+            Utillities.DrawNewChart(spamWordCountDictionary, chartSpamWordLength);
 
             labelHamAverageLength.Text = String.Format("Ham words average length: {0:F2}", Utillities.CountAverageLength(hamDictionary));
             labelSpamAverageLength.Text = String.Format("Spam words average length: {0:F2}", Utillities.CountAverageLength(spamDictionary));
 
-            Utillities.DrawNewChart(hamList, chartHamNoticeLength);
-            Utillities.DrawNewChart(spamList, chartSpamNoticeLength);
+            var hamNotificationCountDictionary = Utillities.CountWordsLength(hamList).OrderBy(m => m.Key);
+            var spamNotificationCountDictionary = Utillities.CountWordsLength(spamList).OrderBy(m => m.Key);
+
+            Utillities.DrawNewChart(hamNotificationCountDictionary, chartHamNotificationLength);
+            Utillities.DrawNewChart(spamNotificationCountDictionary, chartSpamNotificationLength);
 
             labelHamNoticeAvgLength.Text = String.Format("Ham notices average length: {0:F2}", Utillities.CountAverageLength(hamList));
             labelSpamNoticeAvgLength.Text = String.Format("Spam notices average length: {0:F2}", Utillities.CountAverageLength(spamList));
 
-            Utillities.CountWordsLength(hamDictionary, chartHamFrequentWords);
-            Utillities.CountWordsLength(spamDictionary, chartSpamFrequentWords);
+            Utillities.CountFrequentWordsLength(hamDictionary, chartHamFrequentWords);
+            Utillities.CountFrequentWordsLength(spamDictionary, chartSpamFrequentWords);
         }
 
         private Dictionary<string, int> CountWords(string text)
