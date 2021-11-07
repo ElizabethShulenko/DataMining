@@ -36,9 +36,9 @@ namespace LW3.Utillities
 
                 chart.Series.Add(series);
 
-                var centroidSeries = GetCentroidSeries(cluster.Centroid);
+                //var centroidSeries = GetCentroidSeries(cluster.Centroid);
 
-                chart.Series.Add(centroidSeries);
+                //chart.Series.Add(centroidSeries);
             }
         }
 
@@ -46,7 +46,7 @@ namespace LW3.Utillities
         {
             var series = new Series();
 
-            series.ChartType = SeriesChartType.FastPoint;
+            series.ChartType = SeriesChartType.Point;
             series.IsVisibleInLegend = false;
 
             foreach (var vector in cluster.Vectors)

@@ -61,8 +61,6 @@ namespace LW3
                 }
 
                 closestCluster.Add(vector);
-
-                //closestCluster.CountNewCentroid();
             }
         }
     }
