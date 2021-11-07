@@ -6,17 +6,6 @@ namespace LW1
 {
     public static class Utillities
     {
-        //public static void DrawNewChart(IEnumerable<KeyValuePair<string, int>> dictionary, Chart chart)
-        //{
-        //    var count = 0;
-
-        //    foreach (var keyValuePair in dictionary)
-        //    {
-        //        chart.Series[0].Points.AddXY(count, keyValuePair.Key.Length);
-        //        count++;
-        //    }
-        //}
-
         public static void DrawNewChart(IEnumerable<KeyValuePair<int, int>> dictionary, Chart chart)
         {
 
@@ -25,17 +14,6 @@ namespace LW1
                 chart.Series[0].Points.AddXY(keyValuePair.Key, keyValuePair.Value);
             }
         }
-
-        //public static void DrawNewChart(IEnumerable<string> notificationList, Chart chart)
-        //{
-        //    var count = 0;
-
-        //    foreach (var notise in notificationList)
-        //    {
-        //        chart.Series[0].Points.AddXY(count, notise.Length);
-        //        count++;
-        //    }
-        //}
         public static double CountAverageLength(IEnumerable<KeyValuePair<string, int>> dictionary)
         {
             double wordLengthSum = dictionary.Select(w => w.Key.Length).Sum();
