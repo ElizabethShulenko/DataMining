@@ -42,6 +42,16 @@ namespace LW3.Utillities
             }
         }
 
+        public static void DrawAverageDistance(Chart chart, Dictionary<int, double> dictionary)
+        {
+            chart.Series[0].Points.Clear();
+
+            foreach (var item in dictionary)
+            {
+                chart.Series[0].Points.AddXY(item.Key, item.Value);
+            }
+        }
+
         public static Series GetClusterSeries(Cluster cluster)
         {
             var series = new Series();

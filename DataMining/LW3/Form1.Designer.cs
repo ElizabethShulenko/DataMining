@@ -31,14 +31,18 @@ namespace LW3
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clusterCountToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.iterationCountToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.vectorsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartVectors = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartAverageDistance = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vectorsChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVectors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAverageDistance)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -46,18 +50,17 @@ namespace LW3
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
             this.startToolStripMenuItem,
-            this.clusterCountToolStripTextBox,
-            this.iterationCountToolStripTextBox});
+            this.clusterCountToolStripTextBox});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1347, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1419, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(69, 23);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
@@ -76,35 +79,50 @@ namespace LW3
             this.clusterCountToolStripTextBox.Size = new System.Drawing.Size(100, 23);
             this.clusterCountToolStripTextBox.Visible = false;
             // 
-            // iterationCountToolStripTextBox
-            // 
-            this.iterationCountToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.iterationCountToolStripTextBox.Name = "iterationCountToolStripTextBox";
-            this.iterationCountToolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.iterationCountToolStripTextBox.Visible = false;
-            // 
-            // vectorsChart
+            // chartVectors
             // 
             chartArea1.Name = "ChartArea1";
-            this.vectorsChart.ChartAreas.Add(chartArea1);
-            this.vectorsChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vectorsChart.Location = new System.Drawing.Point(0, 27);
-            this.vectorsChart.Name = "vectorsChart";
+            this.chartVectors.ChartAreas.Add(chartArea1);
+            this.chartVectors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartVectors.Location = new System.Drawing.Point(0, 24);
+            this.chartVectors.Name = "chartVectors";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
             series1.Name = "Series";
-            this.vectorsChart.Series.Add(series1);
-            this.vectorsChart.Size = new System.Drawing.Size(1347, 563);
-            this.vectorsChart.TabIndex = 6;
-            this.vectorsChart.Text = "vectorsChart";
-            this.vectorsChart.Visible = false;
+            this.chartVectors.Series.Add(series1);
+            this.chartVectors.Size = new System.Drawing.Size(739, 551);
+            this.chartVectors.TabIndex = 6;
+            this.chartVectors.Text = "vectorsChart";
+            this.chartVectors.Visible = false;
+            // 
+            // chartAverageDistance
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartAverageDistance.ChartAreas.Add(chartArea2);
+            this.chartAverageDistance.Dock = System.Windows.Forms.DockStyle.Right;
+            legend1.Name = "Legend1";
+            this.chartAverageDistance.Legends.Add(legend1);
+            this.chartAverageDistance.Location = new System.Drawing.Point(739, 24);
+            this.chartAverageDistance.Name = "chartAverageDistance";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderWidth = 5;
+            series2.MarkerSize = 15;
+            series2.Name = "Average Distance";
+            this.chartAverageDistance.Series.Add(series2);
+            this.chartAverageDistance.Size = new System.Drawing.Size(680, 551);
+            this.chartAverageDistance.TabIndex = 8;
+            this.chartAverageDistance.Text = "chart2";
+            this.chartAverageDistance.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1347, 590);
-            this.Controls.Add(this.vectorsChart);
+            this.ClientSize = new System.Drawing.Size(1419, 575);
+            this.Controls.Add(this.chartVectors);
+            this.Controls.Add(this.chartAverageDistance);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -114,7 +132,8 @@ namespace LW3
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vectorsChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVectors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAverageDistance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,9 +143,9 @@ namespace LW3
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.DataVisualization.Charting.Chart vectorsChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVectors;
         private System.Windows.Forms.ToolStripTextBox clusterCountToolStripTextBox;
-        private System.Windows.Forms.ToolStripTextBox iterationCountToolStripTextBox;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartAverageDistance;
     }
 }
 

@@ -8,8 +8,6 @@ namespace LW3
 {
     public static class KMeansAlgorythm
     {
-        static object _locker = new object();
-
         private static Random _random = new Random();
 
         public static List<Cluster> InitClusterCentroides(long maxX, long maxY, int clusterCount)
@@ -32,15 +30,7 @@ namespace LW3
             return clusters;
         }
 
-        public static void CleanClusterVector(ref List<Cluster> clusters)
-        {
-            foreach (var cluster in clusters)
-            {
-                cluster.Vectors = new List<Vector>();
-            }
-        }
-
-        public static void CountClusters(ref List<Cluster> clusters, List<Vector> vectors)
+        public static void CountClusters(List<Cluster> clusters, List<Vector> vectors)
         {
             foreach (var vector in vectors)
             {
@@ -62,6 +52,34 @@ namespace LW3
 
                 closestCluster.Add(vector);
             }
+        }
+
+        public static double RunIteration(List<Vector> vectors, List<Cluster> clusters)
+        {
+            Task.Run(() => KMeansAlgorythm.CountClusters(clusters, vectors)).GetAwaiter().GetResult();
+
+            var clustersAverageDistance = Task.Run(() => GetClastersAverageDistance(clusters)).GetAwaiter().GetResult();
+
+            return clustersAverageDistance;
+        }
+
+        private static double GetClastersAverageDistance(List<Cluster> clusters)
+        {
+            var clustersAverageDistance = 0.0;
+
+            foreach (var cluster in clusters)
+            {
+                var distance = 0.0;
+
+                foreach (var vector in cluster.Vectors)
+                {
+                    distance += vector.Distance(cluster.Centroid) / cluster.Vectors.Count;
+                }
+
+                clustersAverageDistance += distance;
+            }
+
+            return clustersAverageDistance / clusters.Count;
         }
     }
 }

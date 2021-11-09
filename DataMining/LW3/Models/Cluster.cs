@@ -41,19 +41,19 @@ namespace LW3.Models
             Centroid = newCentroid;
         }
 
-        public void CountNewCentroid()
-        {
-            var newCentroid = new Vector();
+        //public void CountNewCentroid()
+        //{
+        //    var newCentroid = new Vector();
 
-            foreach (var vector in Vectors)
-            {
-                newCentroid.Add(vector);
-            }
+        //    foreach (var vector in Vectors)
+        //    {
+        //        newCentroid.Add(vector);
+        //    }
 
-            newCentroid.X /= Vectors.Count;
-            newCentroid.Y /= Vectors.Count;
+        //    newCentroid.X /= Vectors.Count;
+        //    newCentroid.Y /= Vectors.Count;
 
-            Centroid = newCentroid;
-        }
+        //    Centroid = newCentroid;
+        //}
     }
 }

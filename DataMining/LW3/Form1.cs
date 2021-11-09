@@ -22,7 +22,6 @@ namespace LW3
         private void Form1_Load(object sender, EventArgs e)
         {
             clusterCountToolStripTextBox.InitHint("Cluster count");
-            iterationCountToolStripTextBox.InitHint("Iteration count");
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,24 +37,23 @@ namespace LW3
 
             startToolStripMenuItem.Visible = true;
             clusterCountToolStripTextBox.Visible = true;
-            iterationCountToolStripTextBox.Visible = true;
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            vectorsChart.Visible = true;
+            chartVectors.Visible = true;
+            chartAverageDistance.Visible = true;
 
-            vectorsChart.Series.Clear();
+            chartVectors.Series.Clear();
+            chartAverageDistance.Series[0].Points.Clear();
 
             startToolStripMenuItem.Visible = false;
             clusterCountToolStripTextBox.Visible = false;
-            iterationCountToolStripTextBox.Visible = false;
 
             Run();
 
             startToolStripMenuItem.Visible = true;
             clusterCountToolStripTextBox.Visible = true;
-            iterationCountToolStripTextBox.Visible = true;
         }
         #endregion
 
@@ -69,26 +67,44 @@ namespace LW3
             var maxX = _vectors.Select(m => m.X).Max();
             var maxY = _vectors.Select(m => m.Y).Max();
 
-            if (!clusterCountToolStripTextBox.TryParseText(out int clusterAmount))
+            if (!clusterCountToolStripTextBox.TryParseText(out int clusterCount))
             {
                 return;
             }
 
-            var clusters = KMeansAlgorythm.InitClusterCentroides(maxX, maxY, clusterAmount);
+            var clusters = new List<Cluster>();
+            var clustersAverageDistanceDictionary = new Dictionary<int, double>();
 
-            if (!iterationCountToolStripTextBox.TryParseText(out int iterationCount))
+            var clusterTasks = new List<Task<double>>(clusterCount);
+
+            for (int i = 1; i <= clusterCount; i++)
             {
-                return;
+                var iterationClusterList = KMeansAlgorythm.InitClusterCentroides(maxX, maxY, i);
+
+                var iterationVectorList = new List<Vector>(_vectors);
+
+                var task = Task.Run(() => KMeansAlgorythm.RunIteration(_vectors, iterationClusterList));
+
+                clusterTasks.Add(task);
+
+                if (i == clusterCount)
+                {
+                    clusters = iterationClusterList;
+                }
             }
 
-            for (int i = 0; i < iterationCount; i++)
+            var clusterIndex = 1;
+
+            foreach (var task in clusterTasks)
             {
-                Task.Run(() => KMeansAlgorythm.CleanClusterVector(ref clusters)).GetAwaiter().GetResult();
+                var clustersAverageDistance = task.GetAwaiter().GetResult();
 
-                Task.Run(() => KMeansAlgorythm.CountClusters(ref clusters, _vectors)).GetAwaiter().GetResult();
-
-                FormUtillity.DrawClusters(vectorsChart, clusters);
+                clustersAverageDistanceDictionary.Add(clusterIndex++, clustersAverageDistance);
             }
+
+            FormUtillity.DrawClusters(chartVectors, clusters);
+
+            FormUtillity.DrawAverageDistance(chartAverageDistance, clustersAverageDistanceDictionary);
         }
     }
 }
