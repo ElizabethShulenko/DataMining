@@ -24,6 +24,8 @@ namespace LW4
             }
 
             Crawler.StartScan(uri);
+
+            Console.ReadLine();
         }
     }
 }

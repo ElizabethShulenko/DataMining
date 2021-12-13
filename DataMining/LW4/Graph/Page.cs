@@ -51,9 +51,7 @@ namespace LW4.GraphUtillities
 
             var incomingPageRanks = 0D;
 
-            var orderedIncomingPages = IncomingPages.OrderBy(m => m.IncomingPages.Count);
-
-            foreach (var incomingPage in orderedIncomingPages)
+            foreach (var incomingPage in IncomingPages)
             {
                 var incomingPageRank = incomingPage.GetPageRank(calledPages);
 
@@ -72,7 +70,7 @@ namespace LW4.GraphUtillities
             return _pageRank.Value;
         }
 
-        public void DisplayOutcomingPages()
+        public void DisplayConnectedPages()
         {
             foreach (var page in ConnectedPages)
             {

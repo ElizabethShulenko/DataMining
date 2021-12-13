@@ -26,8 +26,6 @@ namespace LW4
             {
                 Console.WriteLine($"PR: {page.GetPageRank(null)}\tIN: {page.IncomingPages.Count}\tOUT: {page.ConnectedPages.Count}\t{page.Uri}");
             }
-
-            Console.ReadLine();
         }
 
         private static void ScanPage(Page basePage)
@@ -48,8 +46,8 @@ namespace LW4
                 var outgoingPage = Graph.FindPage(outgoingUri.AbsoluteUri)
                     ?? new Page(outgoingUri.AbsoluteUri);
 
-                if (!basePage.ConnectedPages.Contains(outgoingPage)
-                    && !basePage.IncomingPages.Contains(outgoingPage))
+                if (!basePage.ConnectedPages.Contains(outgoingPage))
+                //if (!basePage.ConnectedPages.Contains(outgoingPage) && !basePage.IncomingPages.Contains(outgoingPage))
                 {
                     outgoingPage.AddIncomingPage(basePage);
 
@@ -73,14 +71,14 @@ namespace LW4
 
             foreach (var uriNode in uriNodes)
             {
-                var uriString = uriNode.InnerText.Trim('/');
+                var uriString = uriNode?.InnerText?.Trim('/') ?? String.Empty;
 
                 if (uriString.IndexOf('?') != -1)
                 {
                     uriString = uriString.Substring(0, uriString.IndexOf('?'));
                 }
 
-                if (String.IsNullOrEmpty(uriString))
+                if (String.IsNullOrEmpty(uriString) || uriString == _host)
                 {
                     continue;
                 }

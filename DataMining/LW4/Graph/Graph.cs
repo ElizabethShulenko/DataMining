@@ -22,9 +22,9 @@ namespace LW4.GraphUtillities
 
         public bool HasPage(string uri)
         {
-            var page = Pages.Any(m => m.Uri.ToLower() == uri.ToLower());
+            var isHas = Pages.Any(m => m.Uri.ToLower() == uri.ToLower());
 
-            return page;
+            return isHas;
         }
 
         public void DisplayGraph()
@@ -33,7 +33,7 @@ namespace LW4.GraphUtillities
             {
                 Console.WriteLine($"Page ({page.Uri}) contains such links:");
 
-                page.DisplayOutcomingPages();
+                page.DisplayConnectedPages();
             }
 
             Console.WriteLine();
